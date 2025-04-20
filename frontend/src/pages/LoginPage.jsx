@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 import axios from "axios";
 import "../css/auth.css";
 
@@ -37,11 +37,15 @@ const Login = () => {
     setError("");
 
     try {
+<<<<<<< HEAD
       const res = await axios.post(
         "/api/auth/login",
         { username, password },
         { withCredentials: true }
       );
+=======
+      const res = await loginUser({ username, password });
+>>>>>>> 6f5effb (Added a few pages)
       console.log("Login successful", res.data.message);
 
       window.dispatchEvent(new Event("username-updated"));
