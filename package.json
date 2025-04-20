@@ -1,0 +1,25 @@
+{
+  "name": "web-dev-project3",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "install": "npm install --prefix frontend && npm install --prefix backend",
+    "dev": "concurrently \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "build": "npm run build -ws --if-present",
+    "prod": "npm run start -w backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JingjingJi94/Jingjing-Ji-Ziqun-Liu-Yijia-Zhan-project3.git"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
+}
