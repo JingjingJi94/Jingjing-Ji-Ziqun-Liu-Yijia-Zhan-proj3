@@ -1,19 +1,32 @@
-import express from 'express';
-import {registerUser, loginUser, logoutUser } from '../controllers/authController.js';
-import getScores from '../controllers/scoreController.js';
+import express from "express";
+// Modified by ziqun
+// =========================
+import {
+  registerUser,
+  loginUser,
+  logoutUser,
+  getLoginStatus,
+} from "../controllers/authController.js";
+// =========================
+import getScores from "../controllers/scoreController.js";
 
 const router = express.Router();
 
+// Modified by ziqun
+// =========================
+router.get("/api/auth/status", getLoginStatus);
+// =========================
+
 // Register route
-router.post('/api/auth/register', registerUser);
+router.post("/api/auth/register", registerUser);
 
 // Login route
-router.post('/api/auth/login', loginUser);
+router.post("/api/auth/login", loginUser);
 
 // Logout route
-router.post('/api/auth/logout', logoutUser);
+router.post("/api/auth/logout", logoutUser);
 
 // scores route
-router.get('api/scores', getScores);
+router.get("api/scores", getScores);
 
 export default router;

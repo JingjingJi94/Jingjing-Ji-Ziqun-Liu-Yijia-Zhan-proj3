@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams, Navigate } from "react-router-dom";
-import EasyGame from "../game/EasyGame";
 import NormalGame from "../game/NormalGame";
 
 export default function Game() {
