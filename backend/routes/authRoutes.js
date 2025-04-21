@@ -1,21 +1,15 @@
 import express from "express";
-// Modified by ziqun
-// =========================
 import {
   registerUser,
   loginUser,
   logoutUser,
   getLoginStatus,
 } from "../controllers/authController.js";
-// =========================
 import getScores from "../controllers/scoreController.js";
 
 const router = express.Router();
 
-// Modified by ziqun
-// =========================
 router.get("/api/auth/status", getLoginStatus);
-// =========================
 
 // Register route
 router.post("/api/auth/register", registerUser);

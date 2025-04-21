@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerUser, checkLoginStatus } from "../api/api";
+import axios from "axios";
 import "../css/auth.css";
 
 const Register = () => {
@@ -11,9 +11,11 @@ const Register = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const redirectIfLoggedIn = async () => {
+    const checkLoginStatus = async () => {
       try {
-        const res = await checkLoginStatus();
+        const res = await axios.get("/api/auth/status", {
+          withCredentials: true,
+        });
         if (res.data.loggedIn) {
           navigate("/");
         }
@@ -22,7 +24,7 @@ const Register = () => {
       }
     };
 
-    redirectIfLoggedIn();
+    checkLoginStatus();
   }, []);
 
   const handleSubmit = async (e) => {
@@ -41,14 +43,18 @@ const Register = () => {
     setError("");
 
     try {
-      const res = await registerUser({ username, password, confirmPassword });
+      const res = await axios.post(
+        "/api/auth/register",
+        { username, password, confirmPassword },
+        { withCredentials: true }
+      );
+
       console.log("Register successful", res.data.message);
       window.dispatchEvent(new Event("username-updated"));
-
       navigate("/");
     } catch (err) {
-      console.error("Register error:", err.response?.data);
-      setError(err.response?.data?.error?.toString() || "Registration failed");
+      console.error("Register error:", err);
+      setError(err.response?.data?.message || "Registration failed");
     }
   };
 

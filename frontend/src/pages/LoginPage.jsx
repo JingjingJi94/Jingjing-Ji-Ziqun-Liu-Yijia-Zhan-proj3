@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../api/api";
-import { checkLoginStatus } from "../api/api";
+import axios from "axios";
 import "../css/auth.css";
 
 const Login = () => {
@@ -11,9 +10,11 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const redirectIfLoggedIn = async () => {
+    const checkLoginStatus = async () => {
       try {
-        const res = await checkLoginStatus();
+        const res = await axios.get("/api/auth/status", {
+          withCredentials: true,
+        });
         if (res.data.loggedIn) {
           navigate("/");
         }
@@ -22,7 +23,7 @@ const Login = () => {
       }
     };
 
-    redirectIfLoggedIn();
+    checkLoginStatus();
   }, []);
 
   const handleSubmit = async (e) => {
@@ -36,7 +37,11 @@ const Login = () => {
     setError("");
 
     try {
-      const res = await loginUser({ username, password });
+      const res = await axios.post(
+        "/api/auth/login",
+        { username, password },
+        { withCredentials: true }
+      );
       console.log("Login successful", res.data.message);
 
       window.dispatchEvent(new Event("username-updated"));

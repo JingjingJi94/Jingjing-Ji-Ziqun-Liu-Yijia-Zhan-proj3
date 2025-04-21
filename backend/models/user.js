@@ -29,12 +29,12 @@ UserSchema.pre("save", async function (next) {
     console.error("Error saving user:", error.message);
     next(error);
   }
-
-  // Method to compare hashed passwords
-  UserSchema.methods.comparePassword = function (enteredPassword) {
-    return bcrypt.compare(enteredPassword, this.password);
-  };
 });
+
+// Method to compare hashed passwords
+UserSchema.methods.comparePassword = function (enteredPassword) {
+  return bcrypt.compare(enteredPassword, this.password);
+};
 
 // Create the User model from the schema,'User' is the model name
 const User = mongoose.model("User", UserSchema);
