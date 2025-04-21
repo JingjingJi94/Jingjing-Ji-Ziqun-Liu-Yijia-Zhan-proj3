@@ -41,6 +41,7 @@ export const User = mongoose.model("User", UserSchema);
 
 // Create a new user and save to db
 export const createUser = async (username, password) => {
+
   try {
     const newUser = new User({ username, password });
     await newUser.save(); // triggers the pre-save hook for hashing
