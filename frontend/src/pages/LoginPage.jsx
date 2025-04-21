@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
-import { useNavigate } from "react-router-dom"
-=======
 import { useNavigate } from "react-router-dom";
->>>>>>> b5821d2 (This version should be able to run)
 import axios from "axios";
 import "../css/auth.css";
 
