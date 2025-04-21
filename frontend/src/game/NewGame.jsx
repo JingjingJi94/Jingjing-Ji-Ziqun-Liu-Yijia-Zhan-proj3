@@ -8,7 +8,7 @@ const NewGame = () => {
   const handleCreate = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:3001/api/games",
+        "/api/games/create",
         {},
         {
           withCredentials: true,

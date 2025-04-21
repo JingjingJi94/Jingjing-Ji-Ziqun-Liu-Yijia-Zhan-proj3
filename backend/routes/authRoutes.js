@@ -21,6 +21,6 @@ router.post("/api/auth/login", loginUser);
 router.post("/api/auth/logout", logoutUser);
 
 // scores route
-router.get("api/scores", getScores);
+router.get("/api/scores", getScores);
 
 export default router;

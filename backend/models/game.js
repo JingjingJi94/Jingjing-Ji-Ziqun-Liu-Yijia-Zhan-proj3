@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const shipSchema = new mongoose.Schema({
-  size: Number,          // e.g., 3
+  size: Number, // e.g., 3
   positions: [{ row: Number, col: Number }], // coordinates on gameboard
   isSunk: Boolean,
 });
@@ -13,8 +13,17 @@ const boardSchema = new mongoose.Schema({
 });
 
 const gameSchema = new mongoose.Schema({
-  player1: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  player2: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, 
+  gameId: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  player1: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  player2: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 
   player1Board: boardSchema,
   player2Board: boardSchema,
@@ -22,24 +31,25 @@ const gameSchema = new mongoose.Schema({
   currentTurn: { type: Number, enum: [1, 2], default: 1 },
 
   gameStatus: {
-    type: String, enum: ['Open', 'Active', 'Completed'], default: 'Open',
+    type: String,
+    enum: ["Open", "Active", "Completed"],
+    default: "Open",
   },
 
-  winner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  winner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 
   startTime: { type: Date, default: Date.now },
   EndTime: { type: Date },
 });
 
 gameSchema.statics.createGame = async function (player1) {
-    const game = new this({
-      player1,
-      player1Board: generateRandomBoard(),
-      status: 'Open',
-      createdAt: new Date(),
-    });
-    return await game.save();
-  };
+  const game = new this({
+    player1,
+    player1Board: generateRandomBoard(),
+    status: "Open",
+    createdAt: new Date(),
+  });
+  return await game.save();
+};
 
-  export default mongoose.model('Game', gameSchema);
-
+export default mongoose.model("Game", gameSchema);

@@ -37,10 +37,10 @@ UserSchema.methods.comparePassword = function (enteredPassword) {
 };
 
 // Create the User model from the schema,'User' is the model name
-const User = mongoose.model("User", UserSchema);
+export const User = mongoose.model("User", UserSchema);
 
 // Create a new user and save to db
-const createUser = async (username, password) => {
+export const createUser = async (username, password) => {
   try {
     const newUser = new User({ username, password });
     await newUser.save(); // triggers the pre-save hook for hashing
@@ -49,5 +49,3 @@ const createUser = async (username, password) => {
     throw new Error(`User creation failed: ${error.message}`);
   }
 };
-
-export { User, createUser };
