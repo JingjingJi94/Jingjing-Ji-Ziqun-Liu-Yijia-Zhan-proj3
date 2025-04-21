@@ -31,3 +31,4 @@ node_modules/
 **/node_modules/
 **/.package-lock.json
 **/.vite/deps/_metadata.json
+/dist

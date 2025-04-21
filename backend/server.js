@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
+import path from "path";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/authRoutes.js";
 import gameRoutes from "./routes/gameRoutes.js";
@@ -41,4 +42,16 @@ mongoose
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+});
+
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+let frontend_dir = path.join(__dirname, '..', 'frontend', 'dist');
+
+app.use(express.static(frontend_dir));
+app.get('*', function (req, res) {
+    console.log("received request");
+    res.sendFile(path.join(frontend_dir, "index.html"));
 });
