@@ -29,11 +29,6 @@ UserSchema.pre("save", async function (next) {
     console.error("Error saving user:", error.message);
     next(error);
   }
-
-  // Method to compare hashed passwords
-  UserSchema.methods.comparePassword = function (enteredPassword) {
-    return bcrypt.compare(enteredPassword, this.password);
-  };
 });
 
 // Pre-save through hashing the password before saving to db.This attaches the pre-save hook to the schema This function runs when .save() is called using this schema
@@ -61,18 +56,10 @@ UserSchema.methods.comparePassword = function (enteredPassword) {
 };
 
 // Create the User model from the schema,'User' is the model name
-<<<<<<< HEAD
 export const User = mongoose.model("User", UserSchema);
 
 // Create a new user and save to db
 export const createUser = async (username, password) => {
-
-=======
-const User = mongoose.model("User", UserSchema);
-
-// Create a new user and save to db
-const createUser = async (username, password) => {
->>>>>>> 6f5effb (Added a few pages)
   try {
     const newUser = new User({ username, password });
     await newUser.save(); // triggers the pre-save hook for hashing
@@ -81,8 +68,3 @@ const createUser = async (username, password) => {
     throw new Error(`User creation failed: ${error.message}`);
   }
 };
-<<<<<<< HEAD
-=======
-
-export { User, createUser };
->>>>>>> 6f5effb (Added a few pages)
