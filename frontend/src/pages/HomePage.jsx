@@ -9,7 +9,7 @@ function Home() {
       <div className="content">
         <h1 className="title">BATTLESHIP GAME</h1>
         <img src={shipImage} alt="ship image" className="image" />
-        <h1>I want to play a</h1>
+        {/* <h1>I want to play a</h1> */}
 
         <div className="home-button-container">
           <Link to="/game/normal">
@@ -23,16 +23,5 @@ function Home() {
     </div>
   );
 }
-
-// const Home = () => {
-//     return (
-//         <div>
-//             <h1>Welcome to Battleship!</h1>
-//             <p>Select your game mode:</p>
-//             <button>Normal Game</button>
-//             <button>Free Play Game</button>
-//         </div>
-//     );
-// };
 
 export default Home;

@@ -1,27 +1,30 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home"; // Home Page
-import Rules from "./pages/Rules";
-import Game from "./pages/Game";
-import HighScores from "./pages/HighScores";
-import Login from "./pages/Login";
+import Home from "./pages/HomePage"; // Home Page
+import Rules from "./pages/RulesPage";
+import Game from "./pages/GamePage";
+import HighScores from "./pages/HighScoresPage";
+import Login from "./pages/LoginPage"; // Login Page
+import Register from "./pages/RegisterPage"; // Register Page
 import Nav from "./components/Nav";
+import AllGames from "./game/AllGames";
+import NewGame from "./game/NewGame";
+import ActiveGame from "./game/ActiveGame";
 import "./css/game.css";
 import "./css/App.css";
 
-
-
-//Since Nav is outside <Routes>, it doesn't get replaced when switch pages.
 function App() {
   return (
-    <Nav> 
+    <Nav>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/games" element={<AllGames />} />
+        <Route path="/game/create" element={<NewGame />} />
+        <Route path="/game/:gameId" element={<ActiveGame />} />
         <Route path="/rules" element={<Rules />} />
-        <Route path="/game" element={<Game />} />
-        <Route path="/game/:difficulty" element={<Game />} />
         <Route path="/highscores" element={<HighScores />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Nav>
   );
