@@ -12,23 +12,19 @@ dotenv.config();
 
 const app = express();
 
-// Added by ziqun
-// =========================
 app.use(
   cors({
     origin: "http://localhost:5173",
     credentials: true,
   })
 );
-// =========================
-
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 // api routes
 app.use(authRoutes);
-app.use(gameRoutes);
+app.use("/api/games", gameRoutes);
 app.use(scoreRoutes);
 
 // MongoDB connection using MongoDBURL from .env file
