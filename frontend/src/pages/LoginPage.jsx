@@ -47,7 +47,7 @@ const Login = () => {
       window.dispatchEvent(new Event("username-updated"));
       navigate("/");
     } catch (err) {
-      console.error("Error logging in:", err);
+      console.error("Error logging in:", err.response?.data);
       setError(err.response?.data?.message || "Log In Failed");
     }
   };
