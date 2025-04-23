@@ -12,7 +12,7 @@ const Nav = ({ children }) => {
 
   const fetchLoginStatus = () => {
     axios
-      .get("http://localhost:3001/api/auth/status", { withCredentials: true })
+      .get("/api/auth/status", { withCredentials: true })
       .then((res) => {
         if (res.data.loggedIn && res.data.username) {
           setUsername(res.data.username);
@@ -48,7 +48,7 @@ const Nav = ({ children }) => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:3001/api/auth/logout",
+        "/api/auth/logout",
         {},
         { withCredentials: true }
       );
@@ -141,9 +141,9 @@ const Nav = ({ children }) => {
               </li>
               <li>
                 <Link
-                  to="/game/create"
+                  to="/game/new"
                   className={`navbar-link ${
-                    location.pathname === "/game/create" ? "selected" : ""
+                    location.pathname === "/game/new" ? "selected" : ""
                   }`}
                 >
                   <i className="fas fa-plus-circle"></i> New Game

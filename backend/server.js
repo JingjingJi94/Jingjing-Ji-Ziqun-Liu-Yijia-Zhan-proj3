@@ -15,7 +15,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5174",
     credentials: true,
   })
 );
@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 // api routes
 app.use(authRoutes);
-app.use("/api/games", gameRoutes);
+app.use(gameRoutes);
 app.use(scoreRoutes);
 
 // MongoDB connection using MongoDBURL from .env file

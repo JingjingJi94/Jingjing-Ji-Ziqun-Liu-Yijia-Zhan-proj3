@@ -1,6 +1,3 @@
-// Future real API call example:
-// axios.get("http://localhost:3001/api/games").then(res => setGames(res.data));
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import GameSection from "./GameSection";
@@ -14,7 +11,7 @@ const AllGames = () => {
     axios
       .get("/api/games", { withCredentials: true })
       .then((res) => {
-        console.log("🎯 Loaded game data:", res.data); // Add this!
+        console.log("🎯 Loaded game data:", res.data); 
         console.log("🧠 username:", username);
         setAllGameData(res.data);
       })
