@@ -9,7 +9,7 @@ import Register from "./pages/RegisterPage"; // Register Page
 import Nav from "./components/Nav";
 import AllGames from "./game/AllGames";
 import NewGame from "./game/NewGame";
-import ActiveGame from "./game/ActiveGame";
+import SingleGame from "./game/SingleGame";
 import "./css/game.css";
 import "./css/App.css";
 
@@ -19,8 +19,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/games" element={<AllGames />} />
-        <Route path="/game/create" element={<NewGame />} />
-        <Route path="/game/:gameId" element={<ActiveGame />} />
+        <Route path="/game/new" element={<NewGame />} />
+        <Route path="/game/:gameId" element={<SingleGame />} />
         <Route path="/rules" element={<Rules />} />
         <Route path="/highscores" element={<HighScores />} />
         <Route path="/login" element={<Login />} />

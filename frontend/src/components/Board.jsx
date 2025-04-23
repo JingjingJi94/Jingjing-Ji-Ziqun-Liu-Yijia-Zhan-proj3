@@ -11,11 +11,22 @@ export default function Board(props) {
   return (
     <div>
       <div className="grid-container">
+        {/* {props.board.ships.map((row, rowIndex) =>
+          row.positions.map((cell, colIndex) => (
+            // nested map loops through the 2-D array board and
+            // each cell gets a div
+            <Cell
+              key={`${rowIndex}-${colIndex}`}
+              value={cell}
+              handleCellClick={() => props.onCellClick(rowIndex, colIndex)}
+              hideShips={props.hideShips}
+            />
+          ))
+        )} */}
         {props.board.map((row, rowIndex) =>
           row.map((cell, colIndex) => (
             // nested map loops through the 2-D array board and
             // each cell gets a div
-
             <Cell
               key={`${rowIndex}-${colIndex}`}
               value={cell}

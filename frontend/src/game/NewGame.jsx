@@ -10,11 +10,11 @@ const NewGame = () => {
       const res = await axios.post(
         "/api/games/create",
         {},
-        {
-          withCredentials: true,
-        }
+        { withCredentials: true }
       );
-      navigate(`/game/${res.data.gameId}`);
+      
+      const gameId = res.data.gameId;
+      navigate(`/game/${gameId}`);
     } catch (err) {
       console.error("Failed to create game:", err);
       alert("Error creating game.");
@@ -23,7 +23,7 @@ const NewGame = () => {
 
   return (
     <div>
-      <h2>Create New Game</h2>
+      <h2>Want To Start a New Game ?</h2>
       <button onClick={handleCreate}>Create Game</button>
     </div>
   );

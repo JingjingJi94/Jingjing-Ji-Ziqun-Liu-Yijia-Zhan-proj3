@@ -15,9 +15,9 @@ function Home() {
           <Link to="/game/normal">
             <button className="home-game-button">Normal Game</button>
           </Link>
-          <Link to="/game/easy">
+          {/* <Link to="/game/easy">
             <button className="home-game-button">Free Play Game</button>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>
