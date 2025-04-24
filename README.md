@@ -37,7 +37,7 @@ Another feature that would be interesting to implement is real-time gameplay, wh
 - Yijia Zhan
 
 ## 6. Attempted Bonus Points
-- Early submission bonus
+- Password Encryption bonus
 
 
 
