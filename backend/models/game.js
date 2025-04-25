@@ -39,7 +39,7 @@ const gameSchema = new mongoose.Schema({
   winner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 
   startTime: { type: Date, default: Date.now },
-  EndTime: { type: Date },
+  endTime: { type: Date },
 });
 
 gameSchema.statics.createGame = async function (player1) {

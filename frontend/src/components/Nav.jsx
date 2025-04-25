@@ -126,6 +126,20 @@ const Nav = ({ children }) => {
               <i className="fas fa-home"></i> Home
             </Link>
           </li>
+          
+          {/* "All Games" link when no user is logged in */}
+          {!isLoggedIn && (
+            <li>
+              <Link
+                to="/games"
+                className={`navbar-link ${
+                  location.pathname === "/games" ? "selected" : ""
+                }`}
+              >
+                <i className="fas fa-th-list"></i> All Games
+              </Link>
+            </li>
+          )}
 
           {isLoggedIn && (
             <>
