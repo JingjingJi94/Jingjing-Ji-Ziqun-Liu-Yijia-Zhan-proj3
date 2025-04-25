@@ -7,7 +7,7 @@ const SingleGame = () => {
   const { gameId } = useParams();
   const [game, setGame] = useState(null);
   const [error, setError] = useState(null);
-  const [username, setUsername] = useState(localStorage.getItem("username"));
+  const [username, setUsername] = useState(null);
   const [currentPlayer, setCurrentPlayer] = useState(null);
 
   useEffect(() => {
@@ -73,7 +73,10 @@ const SingleGame = () => {
   const yourBoard =
     currentPlayer === "player1" ? game.player1Board : game.player2Board;
   let yourBoardAll = Array(10).fill().map(() => Array(10).fill("box"));
-  const yourShips = yourBoard.ships;
+  const yourShips = yourBoard?.ships || [];
+  console.log("Your ships:", yourShips);  // Debugging log to check ship positions
+
+  // const yourShips = yourBoard ? yourBoard.ships : [];
 
   // Iterate over the ship positions and update yourBoardAll
   yourShips.forEach(ship => {
