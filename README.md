@@ -4,7 +4,7 @@
 [Link to GitHub Repo](https://github.com/JingjingJi94/Jingjing-Ji-Ziqun-Liu-Yijia-Zhan-proj3)
 
 ## 2. Video Link
-[Link to Video](https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=bbf0f4a4-d804-43f4-b2)
+[Link to Video](https://youtu.be/Xe3PwcAEV0U)
 
 ## 3. Render App
 [Link to Render App](https://jingjing-ji-ziqun-liu-yijia-zhan-proj3.onrender.com/)
