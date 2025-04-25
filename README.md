@@ -49,6 +49,12 @@ cd frontend/
 npm install
 npm run dev
 ```
+Run the following for now to see backend.
+```bash
+cd backend/
+npm install
+npm run dev
+```
 Integrated the peer dependency `@vitejs/plugin-react`in package.json so that `vite.config.js` can be omitted.
 
 | Script           | Frontend (how)                                                                 | Backend (how)                                                   | Root Command (how)                                                       |
