@@ -6,19 +6,22 @@ import "../css/scores.css";
 
 const HighScores = () => {
   const [scores, setScores] = useState([]);
-  const [username, setUsername] = useState(localStorage.getItem("username"));
+  const [currentUser, setCurrentUser] = useState("");
 
   useEffect(() => {
     const fetchScores = async () => {
       try {
         const response = await axios.get("/api/high-scores"); 
-        const sortedScores = response.data
+        // console.log("High scores response:", response.data);
+        const { users, currentUser } = response.data;
+        setCurrentUser(currentUser); 
+        const sortedScores = users
           .sort((a, b) => {
             // Sort by wins, then losses, and lastly by username alphabetically
-            if (a.wins !== b.wins) {
-              return b.wins - a.wins;
-            } else if (a.losses !== b.losses) {
-              return a.losses - b.losses;
+            if (a.numWins !== b.numWins) {
+              return b.numWins - a.numWins;
+            } else if (a.numLosses !== b.numLosses) {
+              return a.numLosses - b.numLosses;
             } else {
               return a.username.localeCompare(b.username);
             }
@@ -53,13 +56,13 @@ const HighScores = () => {
               <td>{index + 1}</td>
               <td
                 style={{
-                  fontWeight: player.username === username ? "bold" : "normal",
+                  fontWeight: player.username === currentUser ? "bold" : "normal",
                 }}
               >
                 {player.username}
               </td>
-              <td>{player.wins}</td>
-              <td>{player.losses}</td>
+              <td>{player.numWins}</td>
+              <td>{player.numLosses}</td>
             </tr>
           ))}
         </tbody>
