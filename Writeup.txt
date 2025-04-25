@@ -1,0 +1,21 @@
+Writeup
+
+1 Challenges in the Assignment
+Querying the database was slightly challenging, as I needed to learn how to write correct syntax for operators such as $nor and $ne.
+Determining what to render on the player’s board versus the opponent’s board based on the currently logged-in user was tricky. It also took effort to figure out which routes should be accessible only to authenticated users.
+Debugging was another challenge, we often had to check the console for logs and error messages to identify and fix issues efficiently.
+
+
+2 Given more time, what additional features, functional or design changes would you make?
+We would like to add an invite feature, where players can send invitations to other users to join a game. Along with that, a "request to become friends" feature would allow players to build a friend list, making it easier to find and play with people they enjoy gaming with.
+Another feature that would be interesting to implement is real-time gameplay, where the game state updates for both players instantly—without needing to refresh the page or re-enter the game.
+
+
+3 What assumptions did you make while working on this assignment?
+- users will not manual change browser’s cookie to usernames other than his own, otherwise he could gain access to other’s information including game states, user information ,etc.
+- users would not manually modify their browser cookies to impersonate other usernames. If they did, they could potentially gain unauthorized access to other users’ information, including game states and personal data.
+- users would not directly access API endpoints (e.g., those under /api/). These endpoints are intended for internal communication between the frontend and backend of the application, not for direct user interaction.
+
+
+4 How long did this assignment take to complete?
+18-25 hours in total from each team members.
